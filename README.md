@@ -6,7 +6,7 @@ Only Android method channel used to read file, so, IOS side is not working (Curr
 
 # Reads only that markup
 
-<-- <question>Some question
+<-- <question>>Some question
  
 <answer>Answer
 
