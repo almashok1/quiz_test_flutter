@@ -43,9 +43,7 @@ public class MainActivity extends FlutterActivity {
                             WordExtractor we = new WordExtractor(doc);
                             File newTxtFile = new File(externalPath, file.getName().replace(".doc", ".txt"));
                             FileOutputStream fos = new FileOutputStream(newTxtFile);
-                            for (String s : we.getParagraphText()) {
-                              fos.write(s.getBytes());
-                            }
+                            fos.write(we.getText().getBytes());
                             fos.close();
                           }
                           else if (filePath.endsWith(".docx")) {
@@ -55,7 +53,7 @@ public class MainActivity extends FlutterActivity {
                             File newTxtFile = new File(externalPath, file.getName().replace(".docx", ".txt"));
                             FileOutputStream fos = new FileOutputStream(newTxtFile);
                             for (XWPFParagraph p: listPar) {
-                              fos.write(p.getText().getBytes());
+                              fos.write(p.getText().concat("\n").getBytes());
                             }
                             fos.close();
                           }

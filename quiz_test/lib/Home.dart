@@ -10,6 +10,7 @@ import 'package:quiz_test/quiz_objects/Option.dart';
 import 'package:quiz_test/quiz_objects/Question.dart';
 import 'package:quiz_test/quiz_page/QuizPageMode1.dart';
 import 'package:quiz_test/quiz_page/QuizPageMode2.dart';
+import 'package:quiz_test/search.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'models/quiz_model.dart';
@@ -98,20 +99,6 @@ class _HomeState extends State<Home> {
                         children: <Widget>[
                           Container(
                             height: 65.0,
-                            width: 60.0,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.grey,
-                                  style: BorderStyle.solid,
-                                  width: 1.0),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Center(
-                              child: Icon(Icons.search, color: Colors.white),
-                            ),
-                          ),
-                          Container(
-                            height: 65.0,
                             width: 120.0,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -137,11 +124,9 @@ class _HomeState extends State<Home> {
                                             'Выберите правильный файл');
                                         return;
                                       }
-                                      
+
                                       await _read(context);
-                                      setState(() {
-                                        
-                                      });
+                                      setState(() {});
                                     },
                                     child: Text('Загрузить тест',
                                         textAlign: TextAlign.center,
@@ -184,6 +169,7 @@ class _HomeState extends State<Home> {
           'externalPath': externalPath,
         };
         int t = await convert_platform.invokeMethod('convertWordToTxt', map);
+
         _localFile = File(join(
             externalPath, basenameWithoutExtension(_localFile.path) + ".txt"));
       } else if (ext == '.txt') {
@@ -197,6 +183,7 @@ class _HomeState extends State<Home> {
         throw FileSystemException();
       }
     } catch (e) {
+      _localFile.deleteSync();
       _showErrorSnackBar(context, 'Не могу прочитать файл');
     }
   }
@@ -368,13 +355,13 @@ class _HomeState extends State<Home> {
 
   processLinesWithVariant(List<String> lines) {
     for (var i = 0; i < lines.length; i++) {
-      if (lines[i].trim().startsWith('<question>')) {
+      if (lines[i].trim().contains('<question>')) {
         Question question =
             Question(lines[i].replaceFirst("<question>", "").trim());
         ++i;
         bool isFirst = true;
         while (lines[i].isNotEmpty &&
-            lines[i].trim().startsWith('<variant>') &&
+            lines[i].trim().contains('<variant>') &&
             i < lines.length) {
           question.addOption(
               Option(lines[i].replaceFirst("<variant>", "").trim(), isFirst));
@@ -430,6 +417,25 @@ class _HomeState extends State<Home> {
           ),
           child: Row(
             children: <Widget>[
+              Container(
+                width: 60.0,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Colors.grey,
+                        style: BorderStyle.solid,
+                        width: 1.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Color(0xFF1C1428)),
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Search(file: File(file.path))));
+                  },
+                  child: Center(
+                    child: Icon(Icons.search, color: Colors.white),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 4,
                 child: FlatButton(
@@ -446,7 +452,8 @@ class _HomeState extends State<Home> {
               Expanded(
                 flex: 1,
                 child: FlatButton(
-                  child: Icon(Icons.delete_outline, color: Colors.white),
+                  child: Center(
+                      child: Icon(Icons.delete_outline, color: Colors.white)),
                   onPressed: () {
                     File willBeDeletedFile = File(file.path);
                     willBeDeletedFile.deleteSync();
