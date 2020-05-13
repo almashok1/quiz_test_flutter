@@ -8,13 +8,13 @@ Only Android method channel used to read file, so, IOS side is not working (Curr
 
 <question<a>>Some question
  
-<answer<a>>Answer
+<variant<a>>Answer
 
-<answer<a>>Another option
+<variant<a>>Another option
 
-<answer<a>>Another option  
+<variant<a>>Another option  
 
-<answer<a>>Another option
+<variant<a>>Another option
  
  ...
   
