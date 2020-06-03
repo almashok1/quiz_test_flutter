@@ -1,0 +1,33 @@
+{
+    "home": {
+        "upload_test": "Загрузить тест"
+    },
+    "about": {
+        "title": "О приложении",
+        "developers": "Разработчики"
+    },
+    "preparation_mode": {
+        "title": "Режим Подготовления",
+        "answer": "Правильно {} из {}"
+    },
+    "test_mode": {
+        "title": "Режим Тестирования",
+        "end": "Закончить",
+        "results": {
+            "title": "Результаты теста",
+            "answer": "Правильно {} из {}",
+            "fill_all": "Заполните все вопросы"
+        }
+    },
+    "amount_of_questions": "КОЛИЧЕСТВО ВОПРОСОВ",
+    "all": "Все",
+    "search": {
+        "title_hint_text": "Поиск...",
+        "no_data": "НЕТ ДАННЫХ"
+    },
+    "exceptions": {
+        "choose_correct_file": "Выберите правильный файл",
+        "cannot_read_file": "Не могу прочитать файл"
+    },
+    "language": "Язык"
+}

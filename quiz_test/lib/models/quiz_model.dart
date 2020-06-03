@@ -1,4 +1,4 @@
-import 'package:quiz_test/quiz_objects/Question.dart';
+import 'package:TestiGo/models/quiz_objects/question.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class QuizModel extends Model{

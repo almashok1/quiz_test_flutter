@@ -1,0 +1,33 @@
+{
+    "home": {
+        "upload_test": "Upload test"
+    },
+    "about": {
+        "title": "About",
+        "developers": "Developers"
+    },
+    "preparation_mode": {
+        "title": "Preparation Mode",
+        "answer": "Right {} out of {}"
+    },
+    "test_mode": {
+        "title": "Test Mode",
+        "end": "Finish",
+        "results": {
+            "title": "Test results",
+            "answer": "Right {} out of {}",
+            "fill_all": "Fill in all questions"
+        }
+    },
+    "amount_of_questions": "AMOUNT OF QUESTIONS",
+    "all": "All",
+    "search": {
+        "title_hint_text": "Search...",
+        "no_data": "NO DATA"
+    },
+    "exceptions": {
+        "choose_correct_file": "Choose a correct file",
+        "cannot_read_file": "Cannot read a file"
+    },
+    "language": "Language"
+}
