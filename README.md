@@ -1,6 +1,5 @@
 # quiz_test_flutter
 
-Search does not implemented yet.
 Works with extensions: .doc, .docx, .txt
 Only Android method channel used to read file, so, IOS side is not working (Currently does not have Mac system).
 
